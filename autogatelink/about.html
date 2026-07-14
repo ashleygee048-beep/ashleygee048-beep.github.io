@@ -49,6 +49,23 @@
         .btn-quote { background: var(--primary); color: var(--white) !important; padding: 0.5rem 1.5rem; border-radius: 6px; font-weight: 600; transition: var(--transition) !important; }
         .btn-quote:hover { background: var(--primary-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(255,107,0,0.3); }
         .btn-quote::after { display: none !important; }
+        /* Products Dropdown */
+        .nav-item-dropdown { position: relative; }
+        .dropdown-menu { 
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background: rgba(10,10,10,0.98); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,107,0,0.2); border-radius: 12px;
+            padding: 0.75rem 0; min-width: 260px;
+            opacity: 0; visibility: hidden; transition: all 0.25s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.5rem; color: var(--gray-300); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: rgba(255,107,0,0.1); color: var(--primary); }
+        .dropdown-menu a strong { color: var(--white); }
+        .dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 0; }
+
+
         .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
         .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: var(--transition); }
 
@@ -173,7 +190,7 @@
         <div class="topbar-inner">
             <span>DDP Shipping Available to 50+ Countries</span>
             <div class="topbar-links">
-                <a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a>
+                <a href="mailto:info@autogatelink.com">info@autogatelink.com</a>
             </div>
         </div>
     </div>
@@ -184,7 +201,17 @@
             <a href="index.html" class="logo">Auto<span>Gate</span>link</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                            <li class="nav-item-dropdown">
+                <a href="products.html">Products</a>
+                <div class="dropdown-menu">
+                    <a href="products.html#a-series"><strong>A Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Garage Door Openers</span></a>
+                    <a href="products.html#g-series"><strong>G Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Sliding Gate Motors</span></a>
+                    <a href="products.html#l-series"><strong>L Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Accessories</span></a>
+                    <a href="products.html#r-series"><strong>R Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Roller Door Motors</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="contact.html">Request Custom Quote</a>
+                </div>
+            </li>
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -408,7 +435,7 @@
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
-                <a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a>
+                <a href="mailto:info@autogatelink.com">info@autogatelink.com</a>
                 <a href="contact.html">Get Quote</a>
             </div>
         </div>
