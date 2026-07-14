@@ -49,6 +49,22 @@
         .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: width 0.3s; }
         .nav-links a:hover { color: var(--white); }
         .nav-links a:hover::after { width: 100%; }
+        /* Products Dropdown */
+        .nav-item-dropdown { position: relative; }
+        .dropdown-menu { 
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background: rgba(10,10,10,0.98); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,107,0,0.2); border-radius: 12px;
+            padding: 0.75rem 0; min-width: 260px;
+            opacity: 0; visibility: hidden; transition: all 0.25s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.5rem; color: var(--gray-300); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: rgba(255,107,0,0.1); color: var(--primary); }
+        .dropdown-menu a strong { color: var(--white); }
+        .dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 0; }
+
         .nav-cta { background: var(--primary); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 4px; text-decoration: none; font-size: 0.85rem; font-weight: 600; transition: all 0.3s; }
         .nav-cta:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255,107,0,0.35); }
 
@@ -95,7 +111,7 @@
         .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; max-width: 1100px; margin: 0 auto; }
         .product-card { background: var(--white); border-radius: 20px; overflow: hidden; border: 1px solid var(--gray-200); transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
         .product-card:hover { transform: translateY(-10px); box-shadow: 0 25px 70px rgba(0,0,0,0.12); border-color: var(--primary); }
-        .product-card-img { height: 300px; background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; border-bottom: 1px solid var(--gray-200); position: relative; overflow: hidden; }
+        .product-card-img { height: 220px; background: linear-gradient(135deg, #fafafa 0%, #f0f0f0 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem; border-bottom: 1px solid var(--gray-200); position: relative; overflow: hidden; }
         .product-card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.02) 0%, transparent 30%); }
         .product-card-badge { position: absolute; top: 1.5rem; left: 1.5rem; background: var(--primary); color: white; padding: 0.4rem 1.1rem; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
         .product-card-body { padding: 2rem 2rem 2.25rem; }
@@ -203,7 +219,7 @@
         <div class="topbar-inner">
             <span>DDP Shipping Available to 50+ Countries</span>
             <div class="topbar-links">
-                <a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a>
+                <a href="mailto:info@autogatelink.com">info@autogatelink.com</a>
                 <a href="#">+86 153 6096 1160</a>
             </div>
         </div>
@@ -215,7 +231,17 @@
             <a href="index.html" class="logo">Auto<span>Gate</span>link</a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="products.html">Products</a></li>
+                            <li class="nav-item-dropdown">
+                <a href="products.html">Products</a>
+                <div class="dropdown-menu">
+                    <a href="products.html#a-series"><strong>A Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Garage Door Openers</span></a>
+                    <a href="products.html#g-series"><strong>G Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Sliding Gate Motors</span></a>
+                    <a href="products.html#l-series"><strong>L Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Accessories</span></a>
+                    <a href="products.html#r-series"><strong>R Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Roller Door Motors</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="contact.html">Request Custom Quote</a>
+                </div>
+            </li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -241,26 +267,26 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-product-card">
-                    <span class="hero-model-tag">GK Series — DC24V Sliding Gate Motors</span>
+                    <span class="hero-model-tag">A Series — Garage Door Openers</span>
                     <div class="product-img-placeholder" style="background:#1a1a1a;">
-                        <img src="images/sliding-gate/04.jpg" alt="GK Series Sliding Gate Motor" style="width:100%;height:320px;object-fit:contain;border-radius:8px;">
+                        <img src="images/garage-door/A5/garage door opener.jpg" alt="A Series Garage Door Opener" style="width:100%;height:320px;object-fit:contain;border-radius:8px;">
                     </div>
                     <div class="hero-specs-row">
                         <div class="hero-spec">
-                            <div class="val">800KG</div>
-                            <div class="label">Max Load</div>
+                            <div class="val">A5-A8</div>
+                            <div class="label">Model Range</div>
                         </div>
                         <div class="hero-spec">
                             <div class="val">DC24V</div>
                             <div class="label">Motor Voltage</div>
                         </div>
                         <div class="hero-spec">
-                            <div class="val">2m/s</div>
-                            <div class="label">Speed</div>
+                            <div class="val">WiFi</div>
+                            <div class="label">Smart Control</div>
                         </div>
                         <div class="hero-spec">
-                            <div class="val">IP44</div>
-                            <div class="label">Protection</div>
+                            <div class="val">LED</div>
+                            <div class="label">Built-in Light</div>
                         </div>
                     </div>
                 </div>
@@ -273,44 +299,79 @@
         <div class="section-inner">
             <div class="section-header center">
                 <div class="section-tag">Product Range</div>
-                <h2 class="section-title">Our Core <em>Product Line</em></h2>
-                <p class="section-subtitle">From residential to industrial applications — we have the right gate motor solution for every need.</p>
+                <h2 class="section-title">4 Product <em>Series</em></h2>
+                <p class="section-subtitle">Garage doors, sliding gates, roller doors, and accessories — one manufacturer, full range.</p>
             </div>
-            <div class="products-grid">
+            <div class="products-grid" style="grid-template-columns:repeat(4,1fr);max-width:1200px;">
+                <!-- A Series -->
                 <div class="product-card">
-                    <div class="product-card-badge">Belt &amp; Chain Drive</div>
+                    <div class="product-card-badge">A Series</div>
                     <div class="product-card-img" style="background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
-                        <img src="images/garage-door/AB-garage-door-opener.jpg" alt="Garage Door Motor" style="width:100%;height:100%;object-fit:contain;">
+                        <img src="images/garage-door/A5/garage door opener.jpg" alt="A Series Garage Door Opener" style="width:100%;height:100%;object-fit:contain;">
                     </div>
                     <div class="product-card-body">
-                        <h3>Garage Door Opener</h3>
-                        <p>AB belt drive &amp; AJ chain drive openers with LED lighting, WiFi control, voice navigation and backup battery.</p>
+                        <h3>Garage Door Openers</h3>
+                        <p>Belt drive &amp; chain drive openers with LED lighting, WiFi control, voice navigation and built-in backup battery.</p>
                         <div class="product-card-specs">
-                            <span class="spec-chip">AB80 / AB100</span>
-                            <span class="spec-chip">AJ30 / AJ50 / AJ100</span>
-                            <span class="spec-chip">DC24V</span>
-                            <span class="spec-chip">WiFi + Voice</span>
+                            <span class="spec-chip">A5 / A6 / A7 / A8</span>
+                            <span class="spec-chip">DC24V / 180V</span>
+                            <span class="spec-chip">WiFi Ready</span>
                         </div>
-                        <a href="mailto:autogatelink@gmail.com" class="product-link">Request Quote</a>
+                        <a href="products.html#a-series" class="product-link">View Series &rarr;</a>
                     </div>
                 </div>
+                <!-- G Series -->
                 <div class="product-card">
-                    <div class="product-card-badge">DC24V Brushless</div>
+                    <div class="product-card-badge">G Series</div>
                     <div class="product-card-img" style="background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
-                        <img src="images/sliding-gate/04.jpg" alt="Sliding Gate Motor" style="width:100%;height:100%;object-fit:contain;">
+                        <img src="images/sliding-gate/04.jpg" alt="G Series Sliding Gate Motor" style="width:100%;height:100%;object-fit:contain;">
                     </div>
                     <div class="product-card-body">
-                        <h3>Sliding Gate Motor</h3>
+                        <h3>Sliding Gate Motors</h3>
                         <p>DC24V brushless sliding gate motors from 800KG to 1500KG. Built-in battery backup, solar-ready, soft start/stop.</p>
                         <div class="product-card-specs">
-                            <span class="spec-chip">GK800DC / GK1200DC / GK1500DC</span>
+                            <span class="spec-chip">GK800DC / GK1200DC</span>
                             <span class="spec-chip">DC24V</span>
                             <span class="spec-chip">800-1500KG</span>
-                            <span class="spec-chip">Solar Ready</span>
                         </div>
-                        <a href="mailto:autogatelink@gmail.com" class="product-link">Request Quote</a>
+                        <a href="products.html#g-series" class="product-link">View Series &rarr;</a>
                     </div>
                 </div>
+                <!-- L Series -->
+                <div class="product-card">
+                    <div class="product-card-badge">L Series</div>
+                    <div class="product-card-img" style="background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
+                        <img src="images/accessories/L10/Universal Receiver Switch Yet402mf-V3.0.png" alt="L Series Accessories" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Accessories</h3>
+                        <p>Universal remote control receivers, transmitters, and expansion modules. Compatible with most gate motor brands.</p>
+                        <div class="product-card-specs">
+                            <span class="spec-chip">L10 Receiver</span>
+                            <span class="spec-chip">12V / 24V</span>
+                            <span class="spec-chip">Multi-frequency</span>
+                        </div>
+                        <a href="products.html#l-series" class="product-link">View Series &rarr;</a>
+                    </div>
+                </div>
+                <!-- R Series -->
+                <div class="product-card">
+                    <div class="product-card-badge">R Series</div>
+                    <div class="product-card-img" style="background:#f5f5f5;display:flex;align-items:center;justify-content:center;">
+                        <img src="images/roller-door/R9/Australian style roller door opener.png" alt="R Series Roller Door Motor" style="width:100%;height:100%;object-fit:contain;">
+                    </div>
+                    <div class="product-card-body">
+                        <h3>Roller Door Motors</h3>
+                        <p>Australian-style roller door openers with soft start/stop, LED lighting, and smooth operation for doors up to 18m&sup2;.</p>
+                        <div class="product-card-specs">
+                            <span class="spec-chip">R9 Roller Commander</span>
+                            <span class="spec-chip">24VDC</span>
+                            <span class="spec-chip">18m&sup2; Max</span>
+                        </div>
+                        <a href="products.html#r-series" class="product-link">View Series &rarr;</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -397,7 +458,7 @@
             <h2>Ready to <em>Get Started</em>?</h2>
             <p>Send us your requirements and receive a detailed quotation within 24 hours. We support OEM/ODM customization for volume orders.</p>
             <div class="cta-buttons">
-                <a href="mailto:autogatelink@gmail.com" class="btn-white">Email Us</a>
+                <a href="mailto:info@autogatelink.com" class="btn-white">Email Us</a>
                 <a href="https://wa.me/8615360961160" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:white" target="_blank">WhatsApp</a>
             </div>
         </div>
@@ -410,7 +471,7 @@
                 <div class="contact-icon">E</div>
                 <div>
                     <h4>Email</h4>
-                    <p><a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a></p>
+                    <p><a href="mailto:info@autogatelink.com">info@autogatelink.com</a></p>
                 </div>
             </div>
             <div class="contact-item">
@@ -438,14 +499,16 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="footer-inner">
             <div class="footer-logo">Auto<span>Gate</span>link</div>
             <div class="footer-links">
-                <a href="products.html">Products</a>
-                <a href="about.html">About</a>
+                <a href="products.html#a-series">A Series: Garage Door Openers</a>
+                <a href="products.html#g-series">G Series: Sliding Gate Motors</a>
+                <a href="products.html#l-series">L Series: Accessories</a>
+                <a href="products.html#r-series">R Series: Roller Door Motors</a>
+                <a href="about.html">About Us</a>
                 <a href="contact.html">Contact</a>
-                <a href="#">Privacy Policy</a>
             </div>
             <div class="footer-copy">2026 Autogatelink Limited. All rights reserved.</div>
         </div>

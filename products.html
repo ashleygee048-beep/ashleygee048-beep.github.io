@@ -30,13 +30,11 @@
         ::-webkit-scrollbar-track { background: var(--dark); }
         ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
 
-        /* Top Bar */
         .topbar { background: var(--dark); color: var(--gray-400); padding: 0.5rem 0; font-size: 0.8rem; }
         .topbar-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
         .topbar a { color: var(--gray-400); text-decoration: none; transition: var(--transition); }
         .topbar a:hover { color: var(--primary); }
 
-        /* Nav */
         nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,107,0,0.15); }
         .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 70px; }
         .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; }
@@ -49,41 +47,58 @@
         .btn-quote { background: var(--primary); color: var(--white) !important; padding: 0.5rem 1.5rem; border-radius: 6px; font-weight: 600; transition: var(--transition) !important; }
         .btn-quote:hover { background: var(--primary-dark) !important; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(255,107,0,0.3); }
         .btn-quote::after { display: none !important; }
+        /* Products Dropdown */
+        .nav-item-dropdown { position: relative; }
+        .dropdown-menu { 
+            position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px);
+            background: rgba(10,10,10,0.98); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,107,0,0.2); border-radius: 12px;
+            padding: 0.75rem 0; min-width: 260px;
+            opacity: 0; visibility: hidden; transition: all 0.25s ease;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.5rem; color: var(--gray-300); text-decoration: none; font-size: 0.85rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: rgba(255,107,0,0.1); color: var(--primary); }
+        .dropdown-menu a strong { color: var(--white); }
+        .dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 0; }
+
+
         .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
         .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: var(--transition); }
 
-        /* Page Header */
         .page-header { background: var(--dark); padding: 5rem 2rem 4rem; text-align: center; position: relative; overflow: hidden; }
         .page-header::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,107,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,0,0.05) 1px, transparent 1px); background-size: 60px 60px; }
         .page-header-inner { max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
         .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); color: var(--white); margin-bottom: 1rem; }
         .page-header h1 span { color: var(--primary); }
-        .page-header p { color: var(--gray-400); font-size: 1.05rem; max-width: 600px; margin: 0 auto; }
+        .page-header p { color: var(--gray-400); font-size: 1.05rem; max-width: 700px; margin: 0 auto; }
         .breadcrumb { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
         .breadcrumb a, .breadcrumb span { color: var(--gray-400); font-size: 0.85rem; text-decoration: none; }
         .breadcrumb a:hover { color: var(--primary); }
 
-        /* Product Filter */
-        .filter-section { padding: 3rem 2rem 0; max-width: 1280px; margin: 0 auto; text-align: center; }
-        .filter-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
-        .filter-btn { padding: 0.5rem 1.5rem; border: 1px solid var(--gray-300); background: transparent; color: var(--gray-600); border-radius: 50px; cursor: pointer; font-size: 0.9rem; transition: var(--transition); font-family: inherit; }
-        .filter-btn:hover, .filter-btn.active { background: var(--primary); border-color: var(--primary); color: var(--white); }
+        /* Series Navigation */
+        .series-nav { position: sticky; top: 70px; z-index: 999; background: var(--white); border-bottom: 1px solid #eee; padding: 0 2rem; }
+        .series-nav-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 0; overflow-x: auto; }
+        .series-nav a { display: block; padding: 1rem 1.5rem; color: var(--gray-500); text-decoration: none; font-size: 0.85rem; font-weight: 600; white-space: nowrap; border-bottom: 3px solid transparent; transition: var(--transition); }
+        .series-nav a:hover, .series-nav a.active { color: var(--primary); border-bottom-color: var(--primary); }
 
-        /* Products Grid */
         .products-section { padding: 3rem 2rem 6rem; max-width: 1280px; margin: 0 auto; }
+        .category-block { margin-bottom: 6rem; scroll-margin-top: 140px; }
+        .category-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.75rem; }
+        .category-tag { display: inline-block; background: var(--primary); color: var(--white); font-size: 0.7rem; font-weight: 700; padding: 0.2rem 0.8rem; border-radius: 50px; letter-spacing: 0.5px; }
+        .category-sub { color: var(--gray-500); margin-bottom: 2.5rem; font-size: 0.95rem; max-width: 700px; }
 
-        .category-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--dark); margin-bottom: 0.5rem; }
-        .category-sub { color: var(--gray-500); margin-bottom: 2.5rem; font-size: 0.95rem; }
-        .category-block { margin-bottom: 5rem; }
-
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
         .product-card { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: var(--transition); border: 1px solid rgba(0,0,0,0.06); }
         .product-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.14); }
-        .product-img { width: 100%; height: 220px; object-fit: cover; display: block; background: #f5f5f5; }
+        .product-img { width: 100%; height: 240px; object-fit: cover; display: block; background: #f5f5f5; }
+        .product-card .product-img-wrap { position: relative; overflow: hidden; }
+        .product-card .product-img-wrap .product-tag-overlay { position: absolute; top: 12px; left: 12px; background: var(--primary); color: white; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; font-weight: 700; }
 
         .product-info { padding: 1.5rem; }
-        .product-tag { display: inline-block; background: var(--primary-light); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.75rem; border-radius: 50px; margin-bottom: 0.75rem; }
-        .product-name { font-size: 1.25rem; font-weight: 700; color: var(--dark); margin-bottom: 0.5rem; }
+        .product-name { font-size: 1.3rem; font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; }
+        .product-subname { color: var(--primary); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.75rem; }
         .product-desc { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.5; }
 
         .spec-list { list-style: none; margin-bottom: 1.25rem; }
@@ -95,24 +110,23 @@
         .product-link { display: inline-block; color: var(--primary); font-weight: 600; font-size: 0.9rem; text-decoration: none; transition: var(--transition); }
         .product-link:hover { color: var(--primary-dark); }
 
-        /* Detailed Table */
-        .spec-table-wrap { overflow-x: auto; margin-bottom: 3rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .spec-table { width: 100%; border-collapse: collapse; background: var(--white); }
+        .spec-table-wrap { overflow-x: auto; margin-bottom: 2rem; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .spec-table { width: 100%; border-collapse: collapse; background: var(--white); min-width: 700px; }
         .spec-table thead { background: var(--dark); }
-        .spec-table th { color: var(--white); padding: 1rem; text-align: left; font-size: 0.85rem; font-weight: 600; white-space: nowrap; }
-        .spec-table td { padding: 0.85rem 1rem; border-bottom: 1px solid #eee; font-size: 0.9rem; color: var(--gray-700); }
+        .spec-table th { color: var(--white); padding: 0.85rem 1rem; text-align: left; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+        .spec-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #eee; font-size: 0.85rem; color: var(--gray-700); }
         .spec-table tbody tr:hover { background: var(--primary-light); }
         .spec-table tbody tr:last-child td { border-bottom: none; }
-        .spec-table .highlight { background: var(--primary-light); font-weight: 600; color: var(--primary-dark); }
+        .spec-table .highlight-row { background: rgba(255,107,0,0.04); }
 
-        /* Features */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
-        .feature-card { background: #f9f9f9; padding: 1.5rem; border-radius: 12px; display: flex; gap: 1rem; align-items: flex-start; }
-        .feature-icon { width: 44px; height: 44px; background: var(--primary-light); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.3rem; }
-        .feature-title { font-weight: 700; color: var(--dark); margin-bottom: 0.25rem; font-size: 0.95rem; }
-        .feature-desc { color: var(--gray-500); font-size: 0.85rem; line-height: 1.5; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
+        .feature-item { background: #f9f9f9; padding: 1.25rem; border-radius: 10px; display: flex; gap: 0.75rem; align-items: flex-start; }
+        .feature-icon { width: 36px; height: 36px; background: var(--primary-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; font-weight: 700; color: var(--primary); }
+        .feature-title { font-weight: 700; color: var(--dark); margin-bottom: 0.2rem; font-size: 0.9rem; }
+        .feature-desc { color: var(--gray-500); font-size: 0.82rem; line-height: 1.5; }
 
-        /* CTA */
+        .section-divider { height: 1px; background: linear-gradient(to right, transparent, var(--primary), transparent); margin: 4rem 0; opacity: 0.3; }
+
         .cta-section { background: var(--dark); padding: 5rem 2rem; text-align: center; }
         .cta-inner { max-width: 700px; margin: 0 auto; }
         .cta-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 1rem; }
@@ -124,7 +138,6 @@
         .btn-outline { border: 1px solid rgba(255,255,255,0.3); color: var(--white); padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: var(--transition); display: inline-block; }
         .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
 
-        /* Footer */
         footer { background: #060606; padding: 3rem 2rem 1.5rem; }
         .footer-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
         .footer-brand .logo { font-size: 1.5rem; display: block; margin-bottom: 1rem; }
@@ -136,19 +149,17 @@
         .footer-bottom a { color: var(--gray-600); text-decoration: none; }
         .footer-bottom a:hover { color: var(--primary); }
 
-        /* Floating Button */
         .float-btn { position: fixed; bottom: 2rem; right: 2rem; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,0.4); cursor: pointer; z-index: 999; transition: var(--transition); text-decoration: none; }
         .float-btn:hover { transform: scale(1.1); }
         .float-btn svg { width: 28px; height: 28px; fill: white; }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .nav-toggle { display: block; }
             .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: var(--dark); padding: 1.5rem; gap: 1rem; }
-            .footer-inner { grid-template-columns: 1fr 1fr; }
-            .product-grid { grid-template-columns: 1fr; }
+            .series-nav { display: none; }
             .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+            .product-grid { grid-template-columns: 1fr; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
         }
     </style>
@@ -160,7 +171,7 @@
         <div class="topbar-inner">
             <span>DDP Shipping Available to 50+ Countries</span>
             <div class="topbar-links">
-                <a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a>
+                <a href="mailto:info@autogatelink.com">info@autogatelink.com</a>
             </div>
         </div>
     </div>
@@ -171,7 +182,17 @@
             <a href="index.html" class="logo">Auto<span>Gate</span>link</a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="products.html" class="active">Products</a></li>
+                            <li class="nav-item-dropdown">
+                <a href="products.html" class="active">Products</a>
+                <div class="dropdown-menu">
+                    <a href="products.html#a-series"><strong>A Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Garage Door Openers</span></a>
+                    <a href="products.html#g-series"><strong>G Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Sliding Gate Motors</span></a>
+                    <a href="products.html#l-series"><strong>L Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Accessories</span></a>
+                    <a href="products.html#r-series"><strong>R Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Roller Door Motors</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="contact.html">Request Custom Quote</a>
+                </div>
+            </li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -190,25 +211,431 @@
                 <span>/</span>
                 <span style="color:var(--primary)">Products</span>
             </div>
-            <h1>Our <span>Products</span></h1>
-            <p>Professional gate motor solutions — garage door openers, sliding gate motors, and swing gate motors. CE certified, 2-year warranty.</p>
+            <h1>Our <span>Product Series</span></h1>
+            <p>Four product series covering garage door openers, sliding gate motors, accessories, and roller door motors. CE certified, 2-year warranty, factory direct pricing.</p>
         </div>
     </section>
 
-    <!-- Products Section -->
+    <!-- Series Navigation -->
+    <div class="series-nav" id="series-nav">
+        <div class="series-nav-inner">
+            <a href="#a-series" class="active">A Series · Garage Door Openers</a>
+            <a href="#g-series">G Series · Sliding Gate Motors</a>
+            <a href="#l-series">L Series · Accessories</a>
+            <a href="#r-series">R Series · Roller Door Motors</a>
+        </div>
+    </div>
+
+    <script>
+    // Scroll spy for series nav
+    document.addEventListener('DOMContentLoaded', function() {
+        const sections = document.querySelectorAll('.category-block');
+        const navLinks = document.querySelectorAll('.series-nav a');
+        window.addEventListener('scroll', function() {
+            let current = '';
+            sections.forEach(s => {
+                const top = s.offsetTop - 200;
+                if (window.scrollY >= top) current = s.id;
+            });
+            navLinks.forEach(a => {
+                a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+            });
+        });
+    });
+    </script>
+
+    <!-- ===================== PRODUCTS SECTION ===================== -->
     <section class="products-section">
 
-        <!-- ========== SLIDING GATE MOTORS ========== -->
-        <div class="category-block" id="sliding-gate">
-            <h2 class="category-title">Sliding Gate Motors</h2>
-            <p class="category-sub">DC24V brushless motors — powerful, safe, and solar-ready. Supports up to 1500KG load.</p>
+        <!-- =============================== -->
+        <!-- A SERIES · GARAGE DOOR OPENERS   -->
+        <!-- =============================== -->
+        <div class="category-block" id="a-series">
+            <h2 class="category-title">
+                A Series <span class="category-tag" style="background:#222">Garage Door Openers</span>
+            </h2>
+            <p class="category-sub">
+                Residential and commercial garage door openers featuring DC motor technology, 
+                rolling code security, soft start/stop, and multi-level safety protection. 
+                Models A5 through A8 cover torque from 600N to 1200N.
+            </p>
 
-            <!-- Product Cards -->
+            <!-- === A5 === -->
+            <h3 style="font-size:1.3rem;font-weight:700;color:var(--dark);margin-bottom:0.25rem;">A5 Series</h3>
+            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:1.5rem;">24V DC garage door opener with LED courtesy light. Reliable belt drive for residential use.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A5/garage door opener.jpg" alt="A580 Garage Door Opener" class="product-img" loading="lazy">
+                        <span class="product-tag-overlay">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A580</h3>
+                        <p class="product-subname">24V DC · 800 N·m Torque</p>
+                        <p class="product-desc">Compact residential garage door opener. 120W motor, LED lighting, built-in anti-tamper alarm.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Power</span><span class="spec-value">120W</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">25W LED</span></li>
+                            <li><span class="spec-label">Max Torque</span><span class="spec-value">800 N·m</span></li>
+                            <li><span class="spec-label">Output RPM</span><span class="spec-value">170</span></li>
+                            <li><span class="spec-label">Temperature</span><span class="spec-value">-35 ~ +70°C</span></li>
+                            <li><span class="spec-label">G.W</span><span class="spec-value">5.6 KG</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A5/remote control garage door opener.jpg" alt="A5100 Garage Door Opener" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A5100</h3>
+                        <p class="product-subname">24V DC · 1000 N·m Torque</p>
+                        <p class="product-desc">Upgraded residential garage door opener. 150W motor, increased torque for heavier doors.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Power</span><span class="spec-value">150W</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">25W LED</span></li>
+                            <li><span class="spec-label">Max Torque</span><span class="spec-value">1000 N·m</span></li>
+                            <li><span class="spec-label">Output RPM</span><span class="spec-value">170</span></li>
+                            <li><span class="spec-label">Temperature</span><span class="spec-value">-35 ~ +70°C</span></li>
+                            <li><span class="spec-label">G.W</span><span class="spec-value">5.9 KG</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A5 Spec Table -->
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Power (W)</th>
+                            <th>Lighting (W)</th>
+                            <th>Voltage</th>
+                            <th>Max Torque (N·m)</th>
+                            <th>Output RPM</th>
+                            <th>Frequency</th>
+                            <th>Temp Range</th>
+                            <th>G.W (KG)</th>
+                            <th>Packing (mm)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A580</strong></td><td>120</td><td>25</td><td>24V DC</td><td>800</td><td>170</td><td>433Hz</td><td>-35 ~ +70°C</td><td>5.6</td><td>487×242×178</td></tr>
+                        <tr class="highlight-row"><td><strong>A5100</strong></td><td>150</td><td>25</td><td>24V DC</td><td>1000</td><td>170</td><td>433Hz</td><td>-35 ~ +70°C</td><td>5.9</td><td>487×242×179</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A5 Rail Options -->
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.75rem;">Rail Options (One-Piece Rail)</h4>
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead><tr><th>Rail Length (mm)</th><th>Max Door Height (mm)</th><th>G.W (KG)</th><th>Packing (mm)</th></tr></thead>
+                    <tbody>
+                        <tr><td>3000</td><td>2200</td><td>7.0</td><td>3050×72×34</td></tr>
+                        <tr><td>3300</td><td>2500</td><td>7.7</td><td>3350×72×34</td></tr>
+                        <tr><td>3600</td><td>2800</td><td>8.4</td><td>3650×72×34</td></tr>
+                        <tr><td>3900</td><td>3100</td><td>9.1</td><td>3950×72×34</td></tr>
+                        <tr><td>4200</td><td>3400</td><td>9.8</td><td>4250×72×34</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A5 Features -->
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">A5 Series Features</h4>
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">Anti-Tamper Alarm</div><div class="feature-desc">Automatic alarm when rail is tampered with.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Rail Prying Prevention</div><div class="feature-desc">Reinforced rail design prevents forced entry.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">Overload Protection</div><div class="feature-desc">Auto-detects resistance and reverses/stops.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">9-Level Auto Close</div><div class="feature-desc">Delay auto-closing from 10s to 180s.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">Soft Start/Stop</div><div class="feature-desc">LED lighting 3-min delay. Smooth operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">Digital Display</div><div class="feature-desc">433Hz rolling code. No code duplication.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">7</div><div><div class="feature-title">Auto Clutch Reset</div><div class="feature-desc">Clutch auto-resets after manual release.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">8</div><div><div class="feature-title">Accessory Port</div><div class="feature-desc">Photo cell, wall switch, keypad ready.</div></div></div>
+            </div>
+
+            <!-- === A6 === -->
+            <h3 style="font-size:1.3rem;font-weight:700;color:var(--dark);margin:3rem 0 0.25rem;">A6 Series</h3>
+            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:1.5rem;">24V DC garage door opener with LED Chinese/English menu + voice navigation system. Enhanced torque range.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A6/6e70bada-1b6e-4ceb-a3c7-a29e2a9b2bb4.png" alt="A680 Garage Door Opener" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A680</h3>
+                        <p class="product-subname">24V DC · 800 N·m Torque</p>
+                        <p class="product-desc">Garage door opener with voice menu system. 150W motor, LED lighting.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Power</span><span class="spec-value">150W</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
+                            <li><span class="spec-label">Max Torque</span><span class="spec-value">800 N·m</span></li>
+                            <li><span class="spec-label">Output RPM</span><span class="spec-value">140</span></li>
+                            <li><span class="spec-label">G.W</span><span class="spec-value">6.1 KG</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A6/a463b019-57cb-4891-bc62-bf4e9d1e19f8.png" alt="A6100 Garage Door Opener" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A6100</h3>
+                        <p class="product-subname">24V DC · 1000 N·m Torque</p>
+                        <p class="product-desc">Garage door opener with voice navigation and increased torque.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Power</span><span class="spec-value">180W</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
+                            <li><span class="spec-label">Max Torque</span><span class="spec-value">1000 N·m</span></li>
+                            <li><span class="spec-label">Output RPM</span><span class="spec-value">140</span></li>
+                            <li><span class="spec-label">G.W</span><span class="spec-value">6.5 KG</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A6/a463b019-57cb-4891-bc62-bf4e9d1e19f8.png" alt="A6120 Garage Door Opener" class="product-img" loading="lazy">
+                        <span class="product-tag-overlay">Heavy Duty</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A6120</h3>
+                        <p class="product-subname">24V DC · 1200 N·m Torque</p>
+                        <p class="product-desc">Maximum torque chain drive opener. 300W motor, ideal for large/heavy doors.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Power</span><span class="spec-value">300W</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
+                            <li><span class="spec-label">Max Torque</span><span class="spec-value">1200 N·m</span></li>
+                            <li><span class="spec-label">Output RPM</span><span class="spec-value">140</span></li>
+                            <li><span class="spec-label">G.W</span><span class="spec-value">7.8 KG</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A6 Spec Table -->
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead>
+                        <tr><th>Model</th><th>Power (W)</th><th>Lighting (W)</th><th>Voltage</th><th>Max Torque (N·m)</th><th>Output RPM</th><th>Frequency</th><th>Temp Range</th><th>G.W (KG)</th><th>Packing (mm)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>A680</strong></td><td>150</td><td>0.5</td><td>24V DC</td><td>800</td><td>140</td><td>433Hz</td><td>-35 ~ +70°C</td><td>6.1</td><td>505×280×180</td></tr>
+                        <tr class="highlight-row"><td><strong>A6100</strong></td><td>180</td><td>0.5</td><td>24V DC</td><td>1000</td><td>140</td><td>433Hz</td><td>-35 ~ +70°C</td><td>6.5</td><td>505×280×180</td></tr>
+                        <tr><td><strong>A6120</strong></td><td>300</td><td>0.5</td><td>24V DC</td><td>1200</td><td>140</td><td>433Hz</td><td>-35 ~ +70°C</td><td>7.8</td><td>505×280×180</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:0.75rem;">A6 Rail Options</h4>
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead><tr><th>Rail Length (mm)</th><th>Max Door Height (mm)</th><th>G.W (KG)</th><th>Packing (mm)</th></tr></thead>
+                    <tbody>
+                        <tr><td>3000</td><td>2200</td><td>7.0</td><td>3050×72×34</td></tr>
+                        <tr><td>3300</td><td>2500</td><td>7.7</td><td>3350×72×34</td></tr>
+                        <tr><td>3600</td><td>2800</td><td>8.4</td><td>3650×72×34</td></tr>
+                        <tr><td>3900</td><td>3100</td><td>9.1</td><td>3950×72×34</td></tr>
+                        <tr><td>4200</td><td>3400</td><td>9.8</td><td>4250×72×34</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A6 Features -->
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">A6 Series Features</h4>
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">LED Chinese/English Menu</div><div class="feature-desc">Bilingual interface for easy setup.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Voice Navigation</div><div class="feature-desc">Voice-guided menu system. Easy programming.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">9-Level Auto Close</div><div class="feature-desc">Delay auto-closing with timer.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">Soft Start/Stop</div><div class="feature-desc">Fine-tune stroke, smooth operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">Auto Power Detection</div><div class="feature-desc">Detects door open/close power automatically.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">Overload Protection</div><div class="feature-desc">Display warning + auto reverse on obstruction.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">7</div><div><div class="feature-title">Auto Clutch Reset</div><div class="feature-desc">Automatic reset after manual release.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">8</div><div><div class="feature-title">Rolling Code Remote</div><div class="feature-desc">433Hz rolling code technology. No code copying.</div></div></div>
+            </div>
+
+            <!-- === A7 === -->
+            <h3 style="font-size:1.3rem;font-weight:700;color:var(--dark);margin:3rem 0 0.25rem;">A7 Series</h3>
+            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:1.5rem;">Ultra-quiet DC motor with soft start/stop. Digital limit system for easy programming. Proven technology tested for reliability.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A7/garage door motor.png" alt="A660 Garage Door Opener" class="product-img" loading="lazy">
+                        <span class="product-tag-overlay">Best Seller</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A660</h3>
+                        <p class="product-subname">Max Pull Force: 600N</p>
+                        <p class="product-desc">Quiet DC motor, soft start/stop, LED lighting. Ideal for standard residential garage doors up to 8m².</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Max Pull Force</span><span class="spec-value">600N</span></li>
+                            <li><span class="spec-label">Max Door Area</span><span class="spec-value">8 m²</span></li>
+                            <li><span class="spec-label">Motor Type</span><span class="spec-value">DC</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">LED</span></li>
+                            <li><span class="spec-label">Digital Limit</span><span class="spec-value">Yes</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A7/Garage door opener -PRO.jpg" alt="A6100 Pro Garage Door Opener" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A6100</h3>
+                        <p class="product-subname">Max Pull Force: 1000N</p>
+                        <p class="product-desc">Powerful unit. Soft start/stop, adjustable force. For larger residential doors up to 12m².</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Max Pull Force</span><span class="spec-value">1000N</span></li>
+                            <li><span class="spec-label">Max Door Area</span><span class="spec-value">12 m²</span></li>
+                            <li><span class="spec-label">Motor Type</span><span class="spec-value">DC</span></li>
+                            <li><span class="spec-label">Lighting</span><span class="spec-value">LED</span></li>
+                            <li><span class="spec-label">Digital Limit</span><span class="spec-value">Yes</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A7 Spec Table -->
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead><tr><th>Model</th><th>Max Pull Force</th><th>Max Door Area</th><th>Motor Type</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>A660</strong></td><td>600N</td><td>8 m²</td><td>DC</td></tr>
+                        <tr class="highlight-row"><td><strong>A6100</strong></td><td>1000N</td><td>12 m²</td><td>DC</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A7 Benefits -->
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">A7 Key Benefits</h4>
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">Quality Tested</div><div class="feature-desc">Proven technology with rigorous quality testing.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Powerful DC Motor</div><div class="feature-desc">Reduced noise and vibration on opening/closing.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">Soft Start/Stop</div><div class="feature-desc">Smooth and quiet operation near living areas.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">Adjustable Force</div><div class="feature-desc">Adjustable obstruction force detection.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">LED Courtesy Light</div><div class="feature-desc">3-minute LED light delay after operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">Transmitter Range</div><div class="feature-desc">Up to 100m range. 433.92 MHz frequency.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">7</div><div><div class="feature-title">Auto-Reverse Safety</div><div class="feature-desc">Software-controlled reversal upon obstruction.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">8</div><div><div class="feature-title">Digital Limit System</div><div class="feature-desc">Easy programming during installation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">9</div><div><div class="feature-title">Manual Release</div><div class="feature-desc">Emergency release for power failure.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">C</div><div><div class="feature-title">Accessory Terminals</div><div class="feature-desc">Photo beams, receivers, push button, lights.</div></div></div>
+            </div>
+
+            <!-- === A8 === -->
+            <h3 style="font-size:1.3rem;font-weight:700;color:var(--dark);margin:3rem 0 0.25rem;">A8 Series</h3>
+            <p style="color:var(--gray-500);font-size:0.9rem;margin-bottom:1.5rem;">220-240V AC belt drive openers with ultra-quiet operation. WiFi connectivity, battery backup option, and premium feature set.</p>
+
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A8/automatic garage door opener.jpg" alt="A860 Garage Door Opener" class="product-img" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A860</h3>
+                        <p class="product-subname">220-240V AC · Belt Drive · 800N</p>
+                        <p class="product-desc">Ultra-quiet belt drive. 800N pull force, LED lighting, WiFi ready.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Input Voltage</span><span class="spec-value">220-240V AC, 50/60Hz</span></li>
+                            <li><span class="spec-label">Power Input</span><span class="spec-value">235W</span></li>
+                            <li><span class="spec-label">Max Pulling Force</span><span class="spec-value">800N</span></li>
+                            <li><span class="spec-label">Driver Type</span><span class="spec-value">Belt</span></li>
+                            <li><span class="spec-label">Motor Type</span><span class="spec-value">18V DC</span></li>
+                            <li><span class="spec-label">Lamp</span><span class="spec-value">LED</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/garage-door/A8/Commercial garage door opener.jpg" alt="A8100 Garage Door Opener" class="product-img" loading="lazy">
+                        <span class="product-tag-overlay">Premium</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">A8100</h3>
+                        <p class="product-subname">220-240V AC · Belt Drive · 1000N</p>
+                        <p class="product-desc">Premium belt drive opener. 1000N pull force, LED lighting, WiFi + battery backup.</p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Input Voltage</span><span class="spec-value">220-240V AC, 50/60Hz</span></li>
+                            <li><span class="spec-label">Power Input</span><span class="spec-value">245W</span></li>
+                            <li><span class="spec-label">Max Pulling Force</span><span class="spec-value">1000N</span></li>
+                            <li><span class="spec-label">Driver Type</span><span class="spec-value">Belt</span></li>
+                            <li><span class="spec-label">Motor Type</span><span class="spec-value">18V DC</span></li>
+                            <li><span class="spec-label">Lamp</span><span class="spec-value">LED</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- A8 Spec Table -->
+            <div class="spec-table-wrap">
+                <table class="spec-table">
+                    <thead><tr><th>Model</th><th>Input Voltage</th><th>Power Input</th><th>Max Pulling Force</th><th>Driver Type</th><th>Motor Type</th><th>Lamp</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>A860</strong></td><td>220-240V AC, 50/60Hz</td><td>235W</td><td>800N</td><td>Belt</td><td>18V DC</td><td>LED</td></tr>
+                        <tr class="highlight-row"><td><strong>A8100</strong></td><td>220-240V AC, 50/60Hz</td><td>245W</td><td>1000N</td><td>Belt</td><td>18V DC</td><td>LED</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- A8 Features -->
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">A8 Series Premium Features</h4>
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">Ultra Quiet</div><div class="feature-desc">Belt drive. Near-silent operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Accelerated Speed</div><div class="feature-desc">Faster door opening and closing.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">WiFi Connected</div><div class="feature-desc">Smart control via mobile app.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">Battery Backup</div><div class="feature-desc">Optional battery backup for outages.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">Rolling Code</div><div class="feature-desc">High-security rolling code technology.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">Soft Start/Stop</div><div class="feature-desc">Smooth acceleration and deceleration.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">7</div><div><div class="feature-title">HomeLink Compatible</div><div class="feature-desc">Compatible with vehicle HomeLink systems.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">8</div><div><div class="feature-title">Camera Compatible</div><div class="feature-desc">Optional camera integration available.</div></div></div>
+            </div>
+
+            <!-- Common Garage Door Rail -->
+            <div class="spec-table-wrap" style="margin-top:2rem;">
+                <table class="spec-table">
+                    <thead><tr><th colspan="2">Common Features (All A Series)</th></tr></thead>
+                    <tbody>
+                        <tr><td>Transmitter</td><td>2 pcs (2 or 4 buttons), 433MHz rolling code</td></tr>
+                        <tr><td>Rail G.W</td><td>7.0 ~ 9.8 KG (depending on length 3000-4200mm)</td></tr>
+                        <tr><td>Remote Distance</td><td>Up to 100m effective range</td></tr>
+                        <tr><td>Warranty</td><td>2 years</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- =============================== -->
+        <!-- G SERIES · SLIDING GATE MOTORS   -->
+        <!-- =============================== -->
+        <div class="category-block" id="g-series">
+            <h2 class="category-title">
+                G Series <span class="category-tag" style="background:#222">Sliding Gate Motors</span>
+            </h2>
+            <p class="category-sub">DC24V brushless sliding gate motors — powerful, safe, and solar-ready. Supports up to 1500KG load with built-in battery backup.</p>
+
             <div class="product-grid">
                 <div class="product-card">
                     <img src="images/sliding-gate/04.jpg" alt="GK800DC Sliding Gate Motor" class="product-img" loading="lazy">
                     <div class="product-info">
-                        <span class="product-tag">Best Seller</span>
+                        <span style="display:inline-block;background:var(--primary-light);color:var(--primary);font-size:0.75rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:0.75rem;">Best Seller</span>
                         <h3 class="product-name">GK800DC</h3>
                         <p class="product-desc">Compact sliding gate motor for gates up to 800KG. Built-in battery backup, solar-compatible.</p>
                         <ul class="spec-list">
@@ -225,9 +652,9 @@
                 <div class="product-card">
                     <img src="images/sliding-gate/Built-in%20backup%20battery.jpg" alt="GK1200DC Sliding Gate Motor" class="product-img" loading="lazy">
                     <div class="product-info">
-                        <span class="product-tag">Heavy Duty</span>
+                        <span style="display:inline-block;background:var(--primary-light);color:var(--primary);font-size:0.75rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:0.75rem;">Heavy Duty</span>
                         <h3 class="product-name">GK1200DC</h3>
-                        <p class="product-desc">Heavy-duty sliding gate motor for gates up to 1200KG. Ideal for commercial and industrial applications.</p>
+                        <p class="product-desc">Heavy-duty sliding gate motor for gates up to 1200KG. Ideal for commercial applications.</p>
                         <ul class="spec-list">
                             <li><span class="spec-label">Max Load</span><span class="spec-value">1200 KG</span></li>
                             <li><span class="spec-label">Power</span><span class="spec-value">550W</span></li>
@@ -242,9 +669,9 @@
                 <div class="product-card">
                     <img src="images/sliding-gate/04.jpg" alt="GK1500DC Sliding Gate Motor" class="product-img" loading="lazy">
                     <div class="product-info">
-                        <span class="product-tag">Industrial</span>
+                        <span style="display:inline-block;background:var(--primary-light);color:var(--primary);font-size:0.75rem;font-weight:600;padding:0.25rem 0.75rem;border-radius:50px;margin-bottom:0.75rem;">Industrial</span>
                         <h3 class="product-name">GK1500DC</h3>
-                        <p class="product-desc">Industrial-grade sliding gate motor for gates up to 1500KG. Maximum reliability for demanding environments.</p>
+                        <p class="product-desc">Industrial-grade sliding gate motor for gates up to 1500KG. Maximum reliability.</p>
                         <ul class="spec-list">
                             <li><span class="spec-label">Max Load</span><span class="spec-value">1500 KG</span></li>
                             <li><span class="spec-label">Power</span><span class="spec-value">Up to 800W</span></li>
@@ -257,355 +684,133 @@
                 </div>
             </div>
 
-            <!-- Sliding Gate Spec Table -->
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1rem;">Technical Specifications</h3>
+            <h4 style="font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:0.75rem;">Technical Specifications</h4>
             <div class="spec-table-wrap">
                 <table class="spec-table">
-                    <thead>
-                        <tr>
-                            <th>Model</th>
-                            <th>Power (W)</th>
-                            <th>Max Load (KG)</th>
-                            <th>Output Torque</th>
-                            <th>Speed (m/s)</th>
-                            <th>Temp Range</th>
-                            <th>G.W (KG)</th>
-                            <th>Packing Size (mm)</th>
-                            <th>Protection</th>
-                        </tr>
-                    </thead>
+                    <thead><tr><th>Model</th><th>Power (W)</th><th>Max Load (KG)</th><th>Output Torque</th><th>Speed (m/s)</th><th>Temp Range</th><th>G.W (KG)</th><th>Packing (mm)</th><th>Protection</th></tr></thead>
                     <tbody>
-                        <tr class="highlight">
-                            <td><strong>GK800DC</strong></td>
-                            <td>370</td>
-                            <td>800 (1763 lb)</td>
-                            <td>18 Nm</td>
-                            <td>2</td>
-                            <td>-45°C ~ +60°C</td>
-                            <td>12.2</td>
-                            <td>320×260×390</td>
-                            <td>IP44</td>
-                        </tr>
-                        <tr>
-                            <td><strong>GK1200DC</strong></td>
-                            <td>550</td>
-                            <td>1200 (2645 lb)</td>
-                            <td>18 Nm</td>
-                            <td>2</td>
-                            <td>-45°C ~ +60°C</td>
-                            <td>12.8</td>
-                            <td>320×260×390</td>
-                            <td>IP44</td>
-                        </tr>
-                        <tr>
-                            <td><strong>GK1500DC</strong></td>
-                            <td>Up to 800</td>
-                            <td>1500</td>
-                            <td>—</td>
-                            <td>2</td>
-                            <td>-45°C ~ +60°C</td>
-                            <td>—</td>
-                            <td>—</td>
-                            <td>IP44</td>
-                        </tr>
+                        <tr class="highlight-row"><td><strong>GK800DC</strong></td><td>370</td><td>800 (1763 lb)</td><td>18 Nm</td><td>2</td><td>-45°C ~ +60°C</td><td>12.2</td><td>320×260×390</td><td>IP44</td></tr>
+                        <tr><td><strong>GK1200DC</strong></td><td>550</td><td>1200 (2645 lb)</td><td>18 Nm</td><td>2</td><td>-45°C ~ +60°C</td><td>12.8</td><td>320×260×390</td><td>IP44</td></tr>
+                        <tr><td><strong>GK1500DC</strong></td><td>Up to 800</td><td>1500</td><td>—</td><td>2</td><td>-45°C ~ +60°C</td><td>—</td><td>—</td><td>IP44</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <!-- Sliding Gate Features -->
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem;">Key Features</h3>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">Key Features</h4>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔋</div>
-                    <div>
-                        <div class="feature-title">Built-in Backup Battery</div>
-                        <div class="feature-desc">Emergency power when mains fails. Automatic switchover.</div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">☀️</div>
-                    <div>
-                        <div class="feature-title">Solar Power Ready</div>
-                        <div class="feature-desc">20W solar panel support. Eco-friendly, off-grid operation.</div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <div>
-                        <div class="feature-title">Smooth & Safe</div>
-                        <div class="feature-desc">Soft start/stop, obstacle detection, auto-reverse on close.</div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📶</div>
-                    <div>
-                        <div class="feature-title">WiFi Control (Optional)</div>
-                        <div class="feature-desc">Smart WiFi module available. Control via mobile app.</div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <div>
-                        <div class="feature-title">LED Status Indicator</div>
-                        <div class="feature-desc">Real-time motor status display. Easy troubleshooting.</div>
-                    </div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <div>
-                        <div class="feature-title">4-Button Remotes ×2</div>
-                        <div class="feature-desc">433MHz rolling code remotes included. High security.</div>
-                    </div>
-                </div>
+                <div class="feature-item"><div class="feature-icon">🔋</div><div><div class="feature-title">Built-in Backup Battery</div><div class="feature-desc">Emergency power when mains fails. Automatic switchover.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">☀️</div><div><div class="feature-title">Solar Power Ready</div><div class="feature-desc">20W solar panel support. Eco-friendly, off-grid operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">🔒</div><div><div class="feature-title">Smooth & Safe</div><div class="feature-desc">Soft start/stop, obstacle detection, auto-reverse on close.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">📶</div><div><div class="feature-title">WiFi Control (Optional)</div><div class="feature-desc">Smart WiFi module available. Control via mobile app.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">💡</div><div><div class="feature-title">LED Status Indicator</div><div class="feature-desc">Real-time motor status display. Easy troubleshooting.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">📋</div><div><div class="feature-title">4-Button Remotes ×2</div><div class="feature-desc">433MHz rolling code remotes included. High security.</div></div></div>
             </div>
         </div>
 
-        <!-- ========== GARAGE DOOR OPENERS ========== -->
-        <div class="category-block" id="garage-door">
-            <h2 class="category-title">Garage Door Openers</h2>
-            <p class="category-sub">Two series: <strong>AB Series</strong> — belt drive with LED lighting, and <strong>AJ Series</strong> — chain drive with WiFi + voice navigation.</p>
+        <div class="section-divider"></div>
 
-            <!-- AB Series -->
-            <h3 style="font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
-                AB Series <span style="font-size:0.8rem;font-weight:400;color:var(--gray-500);">— Belt Drive · LED Lighting · Soft Start/Stop</span>
-            </h3>
+        <!-- =============================== -->
+        <!-- L SERIES · ACCESSORIES           -->
+        <!-- =============================== -->
+        <div class="category-block" id="l-series">
+            <h2 class="category-title">
+                L Series <span class="category-tag" style="background:#222">Accessories</span>
+            </h2>
+            <p class="category-sub">
+                Compatible accessories and components for all Autogatelink gate operators. 
+                Receivers, remotes, and control components engineered for reliability.
+            </p>
 
-            <div class="product-grid">
+            <!-- === L10 === -->
+            <div class="product-grid" style="grid-template-columns: minmax(340px, 500px);">
                 <div class="product-card">
-                    <img src="images/garage-door/AB-garage-door-opener.jpg" alt="AB80 Garage Door Opener" class="product-img" loading="lazy">
-                    <div class="product-info">
-                        <span class="product-tag">Belt Drive</span>
-                        <h3 class="product-name">AB80</h3>
-                        <p class="product-desc">Belt drive garage door opener. For residential garage doors up to 800KG.</p>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">Power</span><span class="spec-value">120W</span></li>
-                            <li><span class="spec-label">Max Door Load</span><span class="spec-value">800 N·m Torque</span></li>
-                            <li><span class="spec-label">Lighting</span><span class="spec-value">25W LED</span></li>
-                            <li><span class="spec-label">Voltage</span><span class="spec-value">24V DC</span></li>
-                            <li><span class="spec-label">G.W</span><span class="spec-value">5.6 KG</span></li>
-                        </ul>
-                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    <div class="product-img-wrap">
+                        <img src="images/accessories/L10/Universal Receiver Switch Yet402mf-V3.0.png" alt="L10 Universal Receiver Switch" class="product-img" loading="lazy" style="height:200px;object-fit:contain;padding:1rem;">
+                        <span class="product-tag-overlay">New</span>
                     </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="images/garage-door/AB-garage-door-motor.png" alt="AB100 Garage Door Opener" class="product-img" loading="lazy">
                     <div class="product-info">
-                        <span class="product-tag">Belt Drive</span>
-                        <h3 class="product-name">AB100</h3>
-                        <p class="product-desc">Upgraded belt drive opener. For heavier residential garage doors.</p>
+                        <h3 class="product-name">L10</h3>
+                        <p class="product-subname">Universal Receiver Switch</p>
+                        <p class="product-desc">
+                            Multi-frequency auto scan universal receiver switch. Compatible with auto doors, garage doors, 
+                            home appliances, and home automation systems. Supports Rolling Code, Fixed Code, and Learning Code.
+                        </p>
                         <ul class="spec-list">
-                            <li><span class="spec-label">Power</span><span class="spec-value">150W</span></li>
-                            <li><span class="spec-label">Max Door Load</span><span class="spec-value">1000 N·m Torque</span></li>
-                            <li><span class="spec-label">Lighting</span><span class="spec-value">25W LED</span></li>
-                            <li><span class="spec-label">Voltage</span><span class="spec-value">24V DC</span></li>
-                            <li><span class="spec-label">G.W</span><span class="spec-value">5.9 KG</span></li>
+                            <li><span class="spec-label">Channels</span><span class="spec-value">2 Channels</span></li>
+                            <li><span class="spec-label">Voltage</span><span class="spec-value">12V / 24V DC</span></li>
+                            <li><span class="spec-label">Material</span><span class="spec-value">ABS / Plastic + Silicone</span></li>
+                            <li><span class="spec-label">Codes</span><span class="spec-value">Rolling / Fixed / Learning</span></li>
+                            <li><span class="spec-label">Auto Shut-Off</span><span class="spec-value">Yes</span></li>
+                            <li><span class="spec-label">EU Standards</span><span class="spec-value">Compliant</span></li>
                         </ul>
                         <a href="contact.html" class="product-link">Request Quote →</a>
                     </div>
                 </div>
             </div>
 
-            <!-- AJ Series -->
-            <h3 style="font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem;margin-top:2.5rem;display:flex;align-items:center;gap:0.75rem;">
-                AJ Series <span style="font-size:0.8rem;font-weight:400;color:var(--gray-500);">— Chain Drive · Voice Navigation · WiFi/TuYa App · 12V Backup Battery</span>
-            </h3>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <img src="images/garage-door/AJ30.jpg" alt="AJ30 Garage Door Opener" class="product-img" loading="lazy">
-                    <div class="product-info">
-                        <span class="product-tag">Chain Drive</span>
-                        <h3 class="product-name">AJ30</h3>
-                        <p class="product-desc">Chain drive opener for residential garage doors. 800 N·m torque output.</p>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">Power</span><span class="spec-value">150W</span></li>
-                            <li><span class="spec-label">Max Door Load</span><span class="spec-value">800 N·m Torque</span></li>
-                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
-                            <li><span class="spec-label">Voltage</span><span class="spec-value">24V DC</span></li>
-                            <li><span class="spec-label">G.W</span><span class="spec-value">6.1 KG</span></li>
-                        </ul>
-                        <a href="contact.html" class="product-link">Request Quote →</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="images/garage-door/AJ50.jpg" alt="AJ50 Garage Door Opener" class="product-img" loading="lazy">
-                    <div class="product-info">
-                        <span class="product-tag">Chain Drive</span>
-                        <h3 class="product-name">AJ50</h3>
-                        <p class="product-desc">Chain drive with voice navigation. For medium residential garage doors.</p>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">Power</span><span class="spec-value">180W</span></li>
-                            <li><span class="spec-label">Max Door Load</span><span class="spec-value">1000 N·m Torque</span></li>
-                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
-                            <li><span class="spec-label">Voltage</span><span class="spec-value">24V DC</span></li>
-                            <li><span class="spec-label">G.W</span><span class="spec-value">6.5 KG</span></li>
-                        </ul>
-                        <a href="contact.html" class="product-link">Request Quote →</a>
-                    </div>
-                </div>
-
-                <div class="product-card">
-                    <img src="images/garage-door/AJ-operator.jpg" alt="AJ100 Garage Door Opener" class="product-img" loading="lazy">
-                    <div class="product-info">
-                        <span class="product-tag">Chain Drive · Heavy Duty</span>
-                        <h3 class="product-name">AJ100</h3>
-                        <p class="product-desc">Heavy-duty chain drive. For larger/heavier garage doors. WiFi + 24V backup battery.</p>
-                        <ul class="spec-list">
-                            <li><span class="spec-label">Power</span><span class="spec-value">300W</span></li>
-                            <li><span class="spec-label">Max Door Load</span><span class="spec-value">1200 N·m Torque</span></li>
-                            <li><span class="spec-label">Lighting</span><span class="spec-value">0.5W LED</span></li>
-                            <li><span class="spec-label">Voltage</span><span class="spec-value">24V DC</span></li>
-                            <li><span class="spec-label">G.W</span><span class="spec-value">7.8 KG</span></li>
-                        </ul>
-                        <a href="contact.html" class="product-link">Request Quote →</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Garage Door Spec Table -->
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1rem;">AB & AJ Series Specifications</h3>
-            <div class="spec-table-wrap">
-                <table class="spec-table">
-                    <thead>
-                        <tr>
-                            <th>Series</th>
-                            <th>Model</th>
-                            <th>Power (W)</th>
-                            <th>Lighting (W)</th>
-                            <th>Voltage</th>
-                            <th>Max Torque (N·m)</th>
-                            <th>Output RPM</th>
-                            <th>Temp Range</th>
-                            <th>G.W (KG)</th>
-                            <th>Packing (mm)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>AB (Belt)</strong></td>
-                            <td>AB80</td>
-                            <td>120</td>
-                            <td>25</td>
-                            <td>24V DC</td>
-                            <td>800</td>
-                            <td>170</td>
-                            <td>-35 ~ +70°C</td>
-                            <td>5.6</td>
-                            <td>487×242×178</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AB (Belt)</strong></td>
-                            <td>AB100</td>
-                            <td>150</td>
-                            <td>25</td>
-                            <td>24V DC</td>
-                            <td>1000</td>
-                            <td>170</td>
-                            <td>-35 ~ +70°C</td>
-                            <td>5.9</td>
-                            <td>487×242×179</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AJ (Chain)</strong></td>
-                            <td>AJ30</td>
-                            <td>150</td>
-                            <td>0.5</td>
-                            <td>24V DC</td>
-                            <td>800</td>
-                            <td>140</td>
-                            <td>-35 ~ +70°C</td>
-                            <td>6.1</td>
-                            <td>505×280×180</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AJ (Chain)</strong></td>
-                            <td>AJ50</td>
-                            <td>180</td>
-                            <td>0.5</td>
-                            <td>24V DC</td>
-                            <td>1000</td>
-                            <td>140</td>
-                            <td>-35 ~ +70°C</td>
-                            <td>6.5</td>
-                            <td>505×280×180</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AJ (Chain)</strong></td>
-                            <td>AJ100</td>
-                            <td>300</td>
-                            <td>0.5</td>
-                            <td>24V DC</td>
-                            <td>1200</td>
-                            <td>140</td>
-                            <td>-35 ~ +70°C</td>
-                            <td>7.8</td>
-                            <td>505×280×180</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Rail Options -->
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1rem;">Rail Options (All Series)</h3>
-            <div class="spec-table-wrap" style="margin-bottom:3rem;">
-                <table class="spec-table">
-                    <thead>
-                        <tr>
-                            <th>Rail Length (mm)</th>
-                            <th>Max Door Height (mm)</th>
-                            <th>Gross Weight (KG)</th>
-                            <th>Packing Size (mm)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>3000</td><td>2200</td><td>7.0</td><td>3050×72×34</td></tr>
-                        <tr><td>3300</td><td>2500</td><td>7.7</td><td>3350×72×34</td></tr>
-                        <tr><td>3600</td><td>2800</td><td>8.4</td><td>3650×72×34</td></tr>
-                        <tr><td>3900</td><td>3100</td><td>9.1</td><td>3950×72×34</td></tr>
-                        <tr><td>4200</td><td>3400</td><td>9.8</td><td>4250×72×34</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Garage Door Features -->
-            <h3 style="font-size:1.2rem;font-weight:700;color:var(--dark);margin-bottom:1.5rem;">Smart Features</h3>
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">L10 Features</h4>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔊</div>
-                    <div><div class="feature-title">Voice Navigation (AJ)</div><div class="feature-desc">LED Chinese & English menu + voice guide for easy setup.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <div><div class="feature-title">WiFi / TuYa App (AJ)</div><div class="feature-desc">Optional built-in WiFi. Control via TuYa app from anywhere.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <div><div class="feature-title">Rolling Code Remote</div><div class="feature-desc">433MHz rolling code. No signal interference or code copying.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div><div class="feature-title">Soft Start & Stop</div><div class="feature-desc">Nine-level delay closing, smooth acceleration and deceleration.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <div><div class="feature-title">Anti-Tamper & Overload</div><div class="feature-desc">Anti-prying alarm, overload protection, obstacle auto-reverse.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔋</div>
-                    <div><div class="feature-title">Backup Battery (AJ)</div><div class="feature-desc">12V built-in backup battery (24V for AJ100). Keeps working during outages.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💡</div>
-                    <div><div class="feature-title">LED Lighting (AB)</div><div class="feature-desc">25W LED lighting with 3-minute auto-off delay. Energy saving.</div></div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔌</div>
-                    <div><div class="feature-title">Accessory Ports</div><div class="feature-desc">Photocell, wire wall switch, flashing light, keypad — all supported.</div></div>
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">Multi-Protocol</div><div class="feature-desc">Rolling code, fixed code, and learning code supported.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Auto Scan</div><div class="feature-desc">Multi-frequency auto scan for easy pairing.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">Dual Voltage</div><div class="feature-desc">Compatible with 12V and 24V systems.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">Wide Application</div><div class="feature-desc">Garage doors, gate operators, home automation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">EU Compliant</div><div class="feature-desc">Meets EU safety and quality standards.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">Customization</div><div class="feature-desc">Custom logo, packaging, and graphics (MOQ 1000).</div></div></div>
+            </div>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- =============================== -->
+        <!-- R SERIES · ROLLER DOOR MOTORS    -->
+        <!-- =============================== -->
+        <div class="category-block" id="r-series">
+            <h2 class="category-title">
+                R Series <span class="category-tag" style="background:#222">Roller Door Motors</span>
+            </h2>
+            <p class="category-sub">
+                Australian style roller door openers designed for roller doors made in Australia, 
+                New Zealand, UK, Saudi Arabia, and South Africa. Supports doors up to 18m².
+            </p>
+
+            <div class="product-grid" style="grid-template-columns: minmax(340px, 500px);">
+                <div class="product-card">
+                    <div class="product-img-wrap">
+                        <img src="images/roller-door/R9/Australian style roller door opener.png" alt="R9 Roller Door Motor" class="product-img" loading="lazy" style="height:220px;object-fit:contain;padding:0.5rem;background:#f5f5f5;">
+                        <span class="product-tag-overlay">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">R9</h3>
+                        <p class="product-subname">Roller Commander</p>
+                        <p class="product-desc">
+                            Australian style roller door opener suitable for roller doors up to 18m². 
+                            Powerful DC motor with quick installation, electronic limit switch, and 
+                            courtesy LED lighting. Metal structure — stronger than plastic.
+                        </p>
+                        <ul class="spec-list">
+                            <li><span class="spec-label">Input Voltage</span><span class="spec-value">200-240V AC 50Hz</span></li>
+                            <li><span class="spec-label">Motor Type</span><span class="spec-value">24V DC Permanent Magnet</span></li>
+                            <li><span class="spec-label">Power</span><span class="spec-value">100 Watts</span></li>
+                            <li><span class="spec-label">Max Door Area</span><span class="spec-value">18 m²</span></li>
+                            <li><span class="spec-label">Reel Diameter</span><span class="spec-value">270mm</span></li>
+                            <li><span class="spec-label">Side Room Required</span><span class="spec-value">45mm</span></li>
+                        </ul>
+                        <a href="contact.html" class="product-link">Request Quote →</a>
+                    </div>
                 </div>
             </div>
 
+            <h4 style="font-size:1rem;font-weight:700;color:var(--dark);margin-top:2rem;margin-bottom:0.75rem;">R9 Key Features</h4>
+            <div class="features-grid">
+                <div class="feature-item"><div class="feature-icon">1</div><div><div class="feature-title">Powerful DC Motor</div><div class="feature-desc">Quick installation, low noise operation.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">2</div><div><div class="feature-title">Auto Lock</div><div class="feature-desc">Motor automatically locks when door is closed.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">3</div><div><div class="feature-title">Auto Reversing</div><div class="feature-desc">Automatic reversing system for safety.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">4</div><div><div class="feature-title">Electronic Limit</div><div class="feature-desc">Electronic limit switch for precise adjustment.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">5</div><div><div class="feature-title">Manual Release</div><div class="feature-desc">Emergency manual release for power failure.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">6</div><div><div class="feature-title">LED Lighting</div><div class="feature-desc">Courtesy LED light auto-on when operating.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">7</div><div><div class="feature-title">Soft Start/Stop</div><div class="feature-desc">Smooth acceleration and deceleration.</div></div></div>
+                <div class="feature-item"><div class="feature-icon">8</div><div><div class="feature-title">Metal Structure</div><div class="feature-desc">Metal construction, stronger than plastic.</div></div></div>
+            </div>
         </div>
 
     </section>
@@ -627,12 +832,14 @@
         <div class="footer-inner">
             <div class="footer-brand">
                 <a href="index.html" class="logo" style="color:var(--white)">Auto<span>Gate</span>link</a>
-                <p>15+ years professional manufacturer of garage door openers and sliding gate motors. Factory direct pricing, CE certified, shipped to 50+ countries worldwide.</p>
+                <p>15+ years professional manufacturer of garage door openers and gate motors. Factory direct pricing, CE certified, shipped to 50+ countries worldwide.</p>
             </div>
             <div class="footer-col">
                 <h4>Products</h4>
-                <a href="products.html#sliding-gate">Sliding Gate Motors</a>
-                <a href="products.html#garage-door">Garage Door Openers</a>
+                <a href="products.html#a-series">A Series · Garage Door Openers</a>
+                <a href="products.html#g-series">G Series · Sliding Gate Motors</a>
+                <a href="products.html#l-series">L Series · Accessories</a>
+                <a href="products.html#r-series">R Series · Roller Door Motors</a>
                 <a href="contact.html">Custom Solutions</a>
             </div>
             <div class="footer-col">
@@ -643,12 +850,12 @@
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
-                <a href="mailto:autogatelink@gmail.com">autogatelink@gmail.com</a>
+                <a href="mailto:info@autogatelink.com">info@autogatelink.com</a>
                 <a href="contact.html">Get Quote</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <span>© 2026 Autogatelink Limited. All rights reserved.</span>
+            <span>&copy; 2026 Autogatelink Limited. All rights reserved.</span>
             <span><a href="#">Privacy Policy</a></span>
         </div>
     </footer>
