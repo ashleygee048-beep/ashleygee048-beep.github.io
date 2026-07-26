@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outdoor Display Solutions | Autogatelink Limited</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --primary-dark: #E55A00;
+            --primary-light: rgba(255,107,0,0.1);
+            --dark: #0A0A0A;
+            --gray-900: #1A1A1A;
+            --gray-800: #2A2A2A;
+            --gray-700: #3A3A3A;
+            --gray-600: #555;
+            --gray-500: #777;
+            --gray-400: #999;
+            --gray-300: #BBB;
+            --gray-200: #DDD;
+            --white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Noto Sans SC', sans-serif; background: var(--white); color: var(--gray-900); line-height: 1.6; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Navigation */
+        nav { position: sticky; top: 0; z-index: 1000; background: rgba(10,10,10,0.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,107,0,0.15); }
+        .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 70px; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--gray-300); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; position: relative; }
+        .nav-links a:hover { color: var(--white); }
+        .nav-item-dropdown { position: relative; }
+        .dropdown-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); background: rgba(10,10,10,0.98); border: 1px solid rgba(255,107,0,0.2); border-radius: 12px; padding: 0.75rem 0; min-width: 260px; opacity: 0; visibility: hidden; transition: all 0.25s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+        .nav-item-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+        .dropdown-menu a { display: block; padding: 0.75rem 1.5rem; color: var(--gray-300); font-size: 0.85rem; transition: all 0.2s; }
+        .dropdown-menu a:hover { background: rgba(255,107,0,0.1); color: var(--primary); }
+        .dropdown-menu a strong { color: var(--white); }
+        .dropdown-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 0.5rem 0; }
+        .nav-cta { background: var(--primary); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; transition: var(--transition); }
+        .nav-cta:hover { background: var(--primary-dark); }
+
+        /* Page Header */
+        .page-header { background: var(--dark); padding: 6rem 2rem 4rem; text-align: center; color: var(--white); }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1rem; }
+        .page-header h1 span { color: var(--primary); }
+        .page-header p { color: var(--gray-400); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+        /* Series Section */
+        .series-section { padding: 5rem 2rem; }
+        .series-section:nth-child(even) { background: var(--bg-light); }
+        .series-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .series-section:nth-child(even) .series-inner { direction: rtl; }
+        .series-section:nth-child(even) .series-inner > * { direction: ltr; }
+        .series-img-wrap { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+        .series-img-wrap img { width: 100%; height: 400px; object-fit: cover; display: block; }
+        .series-badge { display: inline-block; background: var(--primary); color: white; padding: 0.3rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 1rem; }
+        .series-section h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .series-section h3 { color: var(--primary); font-size: 1rem; font-weight: 500; margin-bottom: 1rem; }
+        .series-section p { color: var(--gray-600); margin-bottom: 1.5rem; line-height: 1.8; }
+        .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 2rem; }
+        .spec-item { background: var(--bg-light); padding: 0.75rem 1rem; border-radius: 8px; }
+        .spec-item:nth-child(even) { background: rgba(255,107,0,0.05); }
+        .spec-label { font-size: 0.72rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+        .spec-value { font-size: 0.88rem; font-weight: 600; color: var(--gray-900); }
+        .series-btns { display: flex; gap: 1rem; }
+        .btn-primary { background: var(--primary); color: white; padding: 0.8rem 1.8rem; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: var(--transition); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+        .btn-outline { border: 1px solid var(--gray-300); color: var(--gray-700); padding: 0.8rem 1.8rem; border-radius: 4px; font-size: 0.9rem; transition: var(--transition); }
+        .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* Features Row */
+        .features-row { background: var(--dark); color: var(--white); padding: 4rem 2rem; }
+        .features-row-inner { max-width: 1280px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center; }
+        .feat-item .feat-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .feat-item h4 { font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .feat-item p { font-size: 0.82rem; color: var(--gray-400); }
+
+        /* Gallery Strip */
+        .gallery-strip { display: flex; gap: 0.5rem; margin-top: 1.5rem; }
+        .gallery-strip img { width: 80px; height: 60px; object-fit: cover; border-radius: 8px; cursor: pointer; border: 2px solid transparent; transition: var(--transition); }
+        .gallery-strip img:hover { border-color: var(--primary); }
+
+        /* Footer */
+        footer { background: var(--dark); color: var(--gray-400); padding: 3rem 2rem; }
+        .footer-inner { max-width: 1280px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        footer a { color: var(--gray-400); transition: color 0.3s; }
+        footer a:hover { color: var(--primary); }
+        .footer-links { display: flex; gap: 2rem; list-style: none; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="nav-inner">
+        <a href="index.html" class="logo">Auto<span>Gate</span>link</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="nav-item-dropdown">
+                <a href="products.html">AutoGate</a>
+                <div class="dropdown-menu">
+                    <a href="products.html#a-series"><strong>A Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Garage Door Openers</span></a>
+                    <a href="products.html#g-series"><strong>G Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Sliding Gate Motors</span></a>
+                    <a href="products.html#l-series"><strong>L Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Accessories</span></a>
+                    <a href="products.html#r-series"><strong>R Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Roller Door Motors</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="contact.html">Request Custom Quote</a>
+                </div>
+            </li>
+            <li class="nav-item-dropdown">
+                <a href="outdoor-display.html" style="color:var(--white);">Outdoor Display</a>
+                <div class="dropdown-menu">
+                    <a href="outdoor-display.html#sw-series"><strong>SW Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Standard High-Brightness</span></a>
+                    <a href="outdoor-display.html#on-series"><strong>ON Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Optical Bonding</span></a>
+                    <a href="outdoor-display.html#os-series"><strong>OS Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Outdoor Sunlight</span></a>
+                    <a href="outdoor-display.html#ot-series"><strong>OT Series</strong><br><span style="font-size:0.75rem;opacity:0.7">Touch Display</span></a>
+                    <div class="dropdown-divider"></div>
+                    <a href="contact.html">Request Custom Quote</a>
+                </div>
+            </li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="nav-cta">Get Quote</a>
+    </div>
+</nav>
+
+<!-- Page Header -->
+<section class="page-header">
+    <h1>Outdoor <span>Display</span> Solutions</h1>
+    <p>High-brightness, all-weather commercial display systems. 4 series covering standard signage to advanced optical bonding touch displays — all built for outdoor excellence.</p>
+</section>
+
+<!-- Features Row -->
+<section class="features-row">
+    <div class="features-row-inner">
+        <div class="feat-item">
+            <div class="feat-icon">&#9728;</div>
+            <h4>2500-7500 nit</h4>
+            <p>Ultra-high brightness readable in direct sunlight</p>
+        </div>
+        <div class="feat-item">
+            <div class="feat-icon">&#128737;</div>
+            <h4>IP55-IP66 Rated</h4>
+            <p>Fully weatherproof for any outdoor environment</p>
+        </div>
+        <div class="feat-item">
+            <div class="feat-icon">&#128160;</div>
+            <h4>IK10 Impact</h4>
+            <p>Vandal-resistant, built to last</p>
+        </div>
+        <div class="feat-item">
+            <div class="feat-icon">&#9881;</div>
+            <h4>Aluminum Body</h4>
+            <p>10-year anti-corrosion, zero maintenance</p>
+        </div>
+    </div>
+</section>
+
+<!-- SW Series -->
+<section class="series-section" id="sw-series">
+    <div class="series-inner">
+        <div class="series-img-wrap">
+            <img src="images/outdoor-display/SW/SWC.png" alt="SW Series Outdoor Display" loading="lazy">
+            <div class="gallery-strip">
+                <img src="images/outdoor-display/SW/SW.png" alt="SW clean" onclick="this.parentElement.previousElementSibling.src=this.src">
+                <img src="images/outdoor-display/SW/SWC.png" alt="SW content" onclick="this.parentElement.previousElementSibling.src=this.src">
+            </div>
+        </div>
+        <div class="series-content">
+            <div class="series-badge">SW SERIES</div>
+            <h2>Standard High-Brightness</h2>
+            <h3>Commercial Digital Signage</h3>
+            <p>Reliable high-brightness display for shopping malls, transit hubs, and commercial signage. Dynamic backlight automatically adjusts to ambient light, reducing power consumption while maintaining perfect visibility.</p>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Brightness</div>
+                    <div class="spec-value">1500 - 5000 nit</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Backlight</div>
+                    <div class="spec-value">Auto + Dynamic</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Screen</div>
+                    <div class="spec-value">Industrial Grade OC</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">System</div>
+                    <div class="spec-value">Android / Windows</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Ports</div>
+                    <div class="spec-value">DP, HDMI, VGA, USB</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Installation</div>
+                    <div class="spec-value">Wall / Floor / Suspended</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Body</div>
+                    <div class="spec-value">Aluminum, Anti-Corrosion</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Protection</div>
+                    <div class="spec-value">Outdoor All-Weather</div>
+                </div>
+            </div>
+            <div class="series-btns">
+                <a href="contact.html" class="btn-primary">Request Quote</a>
+                <a href="products.html" class="btn-outline">View Gate Motors</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ON Series -->
+<section class="series-section" id="on-series">
+    <div class="series-inner">
+        <div class="series-img-wrap">
+            <img src="images/outdoor-display/ON/ONC.png" alt="ON Series Outdoor Display" loading="lazy">
+            <div class="gallery-strip">
+                <img src="images/outdoor-display/ON/ON.png" alt="ON clean" onclick="this.parentElement.previousElementSibling.src=this.src">
+                <img src="images/outdoor-display/ON/ONC.png" alt="ON content" onclick="this.parentElement.previousElementSibling.src=this.src">
+            </div>
+        </div>
+        <div class="series-content">
+            <div class="series-badge">ON SERIES</div>
+            <h2>Optical Bonding</h2>
+            <h3>Premium Anti-Glare Display</h3>
+            <p>Advanced optical bonding technology eliminates air gap between glass and display, delivering superior anti-glare, anti-reflection, and anti-dazzle performance. The ultimate solution for premium outdoor installations.</p>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Brightness</div>
+                    <div class="spec-value">3000 - 7500 nit</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Visual</div>
+                    <div class="spec-value">Optical Bonding</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Screen</div>
+                    <div class="spec-value">LCD OC / LED</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Touch</div>
+                    <div class="spec-value">G+G Capacitive (Optional)</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">System</div>
+                    <div class="spec-value">Android / Windows</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Protection</div>
+                    <div class="spec-value">IP65 / IP66</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Impact</div>
+                    <div class="spec-value">IK10 Rated</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Installation</div>
+                    <div class="spec-value">Wall / Floor / Side / Column</div>
+                </div>
+            </div>
+            <div class="series-btns">
+                <a href="contact.html" class="btn-primary">Request Quote</a>
+                <a href="products.html" class="btn-outline">View Gate Motors</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OS Series -->
+<section class="series-section" id="os-series">
+    <div class="series-inner">
+        <div class="series-img-wrap">
+            <img src="images/outdoor-display/OS/OSC.png" alt="OS Series Outdoor Display" loading="lazy">
+            <div class="gallery-strip">
+                <img src="images/outdoor-display/OS/OS.png" alt="OS clean" onclick="this.parentElement.previousElementSibling.src=this.src">
+                <img src="images/outdoor-display/OS/OSC.png" alt="OS content" onclick="this.parentElement.previousElementSibling.src=this.src">
+            </div>
+        </div>
+        <div class="series-content">
+            <div class="series-badge">OS SERIES</div>
+            <h2>Outdoor Sunlight</h2>
+            <h3>Entry-Level Outdoor Display</h3>
+            <p>Compact and cost-effective outdoor sunlight-readable display for basic commercial signage. Built on proven LCD technology with robust all-weather protection — ideal for standard outdoor advertising applications.</p>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Brightness</div>
+                    <div class="spec-value">3000 nit</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Screen</div>
+                    <div class="spec-value">LCD OC / LED</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">System</div>
+                    <div class="spec-value">Android / Displayer</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Touch</div>
+                    <div class="spec-value">G+G Capacitive (Optional)</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Ports</div>
+                    <div class="spec-value">DP, HDMI, VGA, USB</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Protection</div>
+                    <div class="spec-value">IP65</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Impact</div>
+                    <div class="spec-value">IK10 Rated</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Installation</div>
+                    <div class="spec-value">Wall / Suspended</div>
+                </div>
+            </div>
+            <div class="series-btns">
+                <a href="contact.html" class="btn-primary">Request Quote</a>
+                <a href="products.html" class="btn-outline">View Gate Motors</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OT Series -->
+<section class="series-section" id="ot-series">
+    <div class="series-inner">
+        <div class="series-img-wrap">
+            <img src="images/outdoor-display/OT/OTC.png" alt="OT Series Outdoor Display" loading="lazy">
+            <div class="gallery-strip">
+                <img src="images/outdoor-display/OT/OT.png" alt="OT clean" onclick="this.parentElement.previousElementSibling.src=this.src">
+                <img src="images/outdoor-display/OT/OTC.png" alt="OT content" onclick="this.parentElement.previousElementSibling.src=this.src">
+            </div>
+        </div>
+        <div class="series-content">
+            <div class="series-badge">OT SERIES</div>
+            <h2>Touch Display</h2>
+            <h3>Interactive Outdoor Kiosk</h3>
+            <p>Torch-mounted touch display designed for outdoor interactive kiosks and wayfinding systems. G+G or G+F touch options, dual-sided display support, and multiple mounting configurations for maximum installation flexibility.</p>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-label">Brightness</div>
+                    <div class="spec-value">1500 - 5000 nit</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Backlight</div>
+                    <div class="spec-value">Auto + Dynamic</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Screen</div>
+                    <div class="spec-value">Industrial LCD OC / LED</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Touch</div>
+                    <div class="spec-value">G+G / G+F (Optional)</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">System</div>
+                    <div class="spec-value">Android / Windows</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Protection</div>
+                    <div class="spec-value">IP55 / IP56</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Impact</div>
+                    <div class="spec-value">IK10 Rated</div>
+                </div>
+                <div class="spec-item">
+                    <div class="spec-label">Installation</div>
+                    <div class="spec-value">Wall / Floor / Side / Column</div>
+                </div>
+            </div>
+            <div class="series-btns">
+                <a href="contact.html" class="btn-primary">Request Quote</a>
+                <a href="products.html" class="btn-outline">View Gate Motors</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-inner">
+        <div>
+            <a href="index.html" class="logo" style="font-family:'Playfair Display',serif;font-size:1.2rem;">Auto<span style="color:var(--primary);">Gate</span>link</a>
+            <p style="font-size:0.8rem;margin-top:0.5rem;">Premium Gate Motors & Outdoor Displays<br>Shenzhen, Guangdong, China</p>
+        </div>
+        <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">AutoGate</a></li>
+            <li><a href="outdoor-display.html">Outdoor Display</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</footer>
+
+</body>
+</html>
