@@ -1,0 +1,296 @@
+/* ============================================================
+   AutoGate Link - shared overrides (site.css)
+   Loaded AFTER every page's own styles so these rules win.
+   Fixes:
+     1. flex-column <body> clipping oversized children (products /
+        accessories rows were cut off on the right)
+     2. navigation "active" marker not visible / on the wrong item
+     3. missing mobile hamburger menu on several pages
+     4. series-nav strip being clipped
+     5. homepage product carousel
+   ============================================================ */
+
+/* ---------- 1. body is a flex column: children must be able to shrink ---------- */
+body > * { min-width: 0; }
+/* a flex item with margin:0 auto is sized by fit-content, so an oversized
+   child (700px spec table) used to push the whole page past the viewport
+   and body{overflow-x:hidden} simply cut the right hand side off */
+@media (max-width: 1344px) {
+    body > * { max-width: 100%; }
+}
+
+/* ---------- 2. grid/flex children must be allowed to shrink ---------- */
+.model-inner > *,
+.model-media,
+.model-content,
+.model-table,
+.model-note,
+.products-grid > *,
+.section-inner > * { min-width: 0; }
+
+.spec-table-wrap { max-width: 100%; }
+.model-table,
+.model-note { box-sizing: border-box; }
+
+/* the wide spec table must not dictate the page width on small screens */
+@media (max-width: 900px) {
+    .spec-table { min-width: 0; }
+    .spec-table th { white-space: normal; }
+    .spec-table th,
+    .spec-table td { padding: .6rem .55rem; font-size: .78rem; }
+}
+@media (max-width: 560px) {
+    .spec-table { table-layout: fixed; }
+    .spec-table th,
+    .spec-table td { padding: .45rem .35rem; font-size: .7rem; overflow-wrap: break-word; }
+}
+
+/* ---------- 3. hero: a flex item with margin:auto is fit-content sized ---------- */
+.hero-inner { min-width: 0; }
+.hero-specs-row { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- 3b. narrow screen safety net ---------- */
+.table-wrap { max-width: 100%; overflow-x: auto; }
+
+@media (max-width: 768px) {
+    .section-inner > *,
+    .page-header-inner > *,
+    .topbar-inner > *,
+    .nav-inner > *,
+    .story-grid > *,
+    .story-img-grid > *,
+    .factory-gallery > *,
+    .cert-grid > *,
+    .contact-grid > * { min-width: 0; }
+    .story-content h2 { font-size: 2rem; }
+}
+
+@media (max-width: 768px) {
+    .story-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .features-grid,
+    .certs-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .story-stats > *,
+    .features-grid > *,
+    .certs-grid > * { min-width: 0; }
+}
+@media (max-width: 480px) {
+    .features-grid,
+    .certs-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---------- 4. Navigation ---------- */
+.nav-inner { position: relative; }
+
+.nav-links > li > a { position: relative; padding-bottom: 4px; }
+
+.nav-links > li > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: var(--primary, #FF6B00);
+    transition: width .3s ease;
+}
+
+.nav-links > li > a:hover::after,
+.nav-links > li > a.active::after { width: 100%; }
+
+/* the current page marker (this is what was invisible) */
+.nav-links > li > a.active {
+    color: var(--white, #fff);
+    font-weight: 600;
+}
+
+/* dropdown items must not inherit the top level underline */
+.nav-links .dropdown-menu a::after,
+.nav-links .dropdown-menu a:hover::after,
+.nav-links .dropdown-menu a.active::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* unified quote button (replaces .btn-quote / .nav-cta) */
+.nav-quote {
+    display: inline-block;
+    background: var(--primary, #FF6B00);
+    color: var(--white, #fff);
+    padding: .7rem 1.4rem;
+    border-radius: 6px;
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background .25s ease;
+}
+.nav-quote:hover { background: var(--primary-dark, #E05E00); color: var(--white, #fff); }
+
+/* hamburger button (missing on index / news / article pages) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+}
+.nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white, #fff);
+}
+
+@media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-quote { padding: .55rem .9rem; font-size: .8rem; }
+
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: var(--dark, #0a0a0a);
+        padding: 1.5rem;
+        gap: 1rem;
+        z-index: 999;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
+    }
+
+    .nav-links.open .dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        min-width: 0;
+        width: 100%;
+        margin: .25rem 0;
+        padding: .6rem .9rem;
+        background: rgba(255, 255, 255, .04);
+        border: 1px solid rgba(255, 107, 0, .2);
+        border-radius: 10px;
+        box-shadow: none;
+        backdrop-filter: none;
+    }
+    .nav-links.open .dropdown-menu a { color: var(--gray-300, #cfcfcf); }
+    .nav-links.open .dropdown-divider { display: none; }
+}
+
+/* ---------- 4. series-nav strip (was clipped on the left) ---------- */
+.series-nav { padding: 0 !important; }
+.series-nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    scroll-padding-left: 2rem;
+}
+.series-nav-inner::-webkit-scrollbar { display: none; }
+
+/* ---------- 5. Product carousel ---------- */
+.carousel {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1240px;
+    padding: 0 .25rem;
+}
+
+.carousel-track {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    /* slides are absolutely positioned and STACKED at left:0 (always inside
+       the clip). Only the visible window is shifted via translateX, so no
+       slide is ever placed outside the overflow:hidden box -- that was the
+       cause of off-screen slides painting blank. */
+    min-height: 480px;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc((100% - 1.5rem) / 2);
+    min-width: 0;
+    opacity: 0;
+    transition: transform .45s cubic-bezier(.4, 0, .2, 1), opacity .35s ease;
+    will-change: transform, opacity;
+}
+
+.carousel-slide > .product-card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #e6e6e6;
+    background: rgba(255, 255, 255, .95);
+    color: var(--dark, #0a0a0a);
+    font-size: 1.35rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .14);
+    padding: 0;
+    font-family: inherit;
+}
+.carousel-btn:hover { background: var(--primary, #FF6B00); color: #fff; border-color: var(--primary, #FF6B00); }
+.carousel-prev { left: 6px; }
+.carousel-next { right: 6px; }
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
+    margin-top: 1.4rem;
+}
+.carousel-dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #d6d6d6;
+    cursor: pointer;
+}
+.carousel-dots button.active { background: var(--primary, #FF6B00); }
+
+/* dark section variant (Accessories block) */
+.carousel--dark .carousel-dots button { background: rgba(255, 255, 255, .28); }
+.carousel--dark .carousel-dots button.active { background: var(--primary, #FF6B00); }
+.carousel--dark .carousel-btn { background: rgba(20, 20, 20, .9); color: #fff; border-color: rgba(255, 255, 255, .2); }
+
+/* single page carousel: no arrows, no dots, no auto play */
+.carousel[data-state="single"] .carousel-btn,
+.carousel[data-state="single"] .carousel-dots { display: none; }
+
+@media (max-width: 768px) {
+    .carousel-slide { width: 100%; }
+    .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+    .carousel-prev { left: 0; }
+    .carousel-next { right: 0; }
+}

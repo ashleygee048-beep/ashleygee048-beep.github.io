@@ -642,6 +642,23 @@ nav {
 }
 
 /* ============================================
+   Sticky footer: keep footer at bottom on short pages
+   ============================================ */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body > section,
+body > nav,
+body > .topbar {
+    flex-shrink: 0;
+}
+body > footer {
+    margin-top: auto;
+}
+
+/* ============================================
    Footer
    ============================================ */
 footer {
