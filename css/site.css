@@ -1,4 +1,4 @@
-/* ============================================================
+﻿/* ============================================================
    AutoGate Link - shared overrides (site.css)
    Loaded AFTER every page's own styles so these rules win.
    Fixes:
@@ -293,4 +293,34 @@ body > * { min-width: 0; }
     .carousel-btn { width: 36px; height: 36px; font-size: 1.1rem; }
     .carousel-prev { left: 0; }
     .carousel-next { right: 0; }
+}
+/* ===== 6. PHOTO BAND UNDER NAV (11.jpg) ===== */
+.nav-photo,
+.hero,
+.page-header,
+.about-hero,
+.page-hero {
+    background-color: #0a0a0a;
+    background-image:
+        linear-gradient(180deg, rgba(10, 10, 10, .74) 0%, rgba(10, 10, 10, .55) 42%, rgba(10, 10, 10, .74) 100%),
+        url('../images/site/nav-bg.jpg');
+    background-size: cover;
+    background-position: center 42%;
+    background-repeat: no-repeat;
+}
+
+/* 照片横幅（新闻文章页导航下方） */
+.photo-band {
+    height: 190px;
+    background-color: #0a0a0a;
+    background-image:
+        linear-gradient(180deg, rgba(10, 10, 10, .58) 0%, rgba(10, 10, 10, .70) 100%),
+        url('../images/site/nav-bg.jpg');
+    background-size: cover;
+    background-position: center 45%;
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+    .photo-band { height: 120px; }
 }
