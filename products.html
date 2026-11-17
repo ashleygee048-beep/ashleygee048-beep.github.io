@@ -191,6 +191,7 @@
         .gallery-strip { display: flex; gap: 0.6rem; padding: 0.75rem; border-top: 1px solid #eee; background: #fff; flex-wrap: wrap; }
         .gallery-strip img { width: 84px; height: 64px; object-fit: cover; border-radius: 8px; border: 2px solid transparent; cursor: pointer; transition: var(--transition); background: #f5f5f5; }
         .gallery-strip img:hover { border-color: var(--primary); }
+        .gallery-strip img.gallery-kit { object-fit: contain; background: #fff; }
         .model-badge { display: inline-block; background: var(--primary); color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.9rem; border-radius: 50px; margin-bottom: 0.85rem; }
         .model-title { font-family: 'Playfair Display', serif; font-size: 2.1rem; color: var(--dark); margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
         .model-desc { color: var(--gray-500); font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.5rem; }
@@ -201,9 +202,29 @@
         .model-specs .spec-value { font-weight: 600; color: var(--gray-900); text-align: right; }
         .model-table { max-width: 1280px; margin: 1.5rem auto 0; padding: 0 2rem; }
         .model-note { max-width: 1280px; margin: 1rem auto 0; padding: 0 2rem; }
+        .model-kit { max-width: 1280px; margin: 2rem auto 0; padding: 0 2rem; }
+        .model-kit h4 { font-size: 1rem; font-weight: 700; color: var(--dark); margin: 0 0 0.85rem; }
+        .model-kit-figure { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 14px; box-shadow: 0 12px 34px rgba(0,0,0,0.07); overflow: hidden; padding: 1rem; }
+        .model-kit-figure img { display: block; width: 100%; height: auto; object-fit: contain; }
+        .model-kit-figure figcaption { font-size: .82rem; color: var(--gray-500); padding: .85rem .25rem .15rem; text-align: center; }
+
+        /* ===== Use cases ===== */
+        .use-cases { padding: 3.5rem 0 4rem; }
+        .use-cases-inner { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+        .use-cases-head { text-align: center; max-width: 760px; margin: 0 auto 2.5rem; }
+        .use-cases-head .model-badge { margin-bottom: .85rem; }
+        .use-cases-head h2 { font-family: 'Playfair Display', serif; font-size: 2.1rem; color: var(--dark); margin-bottom: .9rem; }
+        .use-cases-head p { color: var(--gray-500); font-size: 1rem; line-height: 1.8; margin: 0; }
+        .use-cases-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+        .use-case-card { background: #fff; border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+        .use-case-card img { width: 100%; height: 240px; object-fit: cover; display: block; }
+        .use-case-body { padding: 1.25rem 1.4rem 1.5rem; }
+        .use-case-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); margin: 0 0 .5rem; }
+        .use-case-body p { font-size: .9rem; color: var(--gray-500); line-height: 1.7; margin: 0; }
         @media (max-width: 900px) {
             .model-inner { grid-template-columns: 1fr; gap: 2rem; }
             .model-main { height: 300px; }
+            .use-cases-grid { grid-template-columns: 1fr; }
         }
 
     </style>
@@ -379,6 +400,7 @@
                     <img id="main-k8" class="model-main" src="images/gate/K8/k8-main.jpg" alt="K8 Plus Pro garage door opener with LED light strips">
                     <div class="gallery-strip">
                 <img src="images/gate/K8/k8-rail.jpg" alt="K8 aluminium C-rail track" loading="lazy" onclick="var m=document.getElementById('main-k8');if(m){m.src=this.src;m.alt=this.alt;}">
+                <img src="images/gate/K8/k8-kit.jpg" alt="K8 standard kit contents" class="gallery-kit" loading="lazy" onclick="var m=document.getElementById('main-k8');if(m){m.src=this.src;m.alt=this.alt;}">
                     </div>
                 </div>
                 <div class="model-content">
@@ -436,8 +458,50 @@
                 </p>
             </div>
         </div>
+        <div class="model-kit">
+            <h4>K8 Standard Kit Contents</h4>
+            <figure class="model-kit-figure">
+                <img src="images/gate/K8/k8-kit.jpg" alt="K8 Plus Pro standard kit: motor unit, two remote controls, resettable clutch, mounting hardware and manual" loading="lazy">
+                <figcaption>K8 standard kit &mdash; motor unit, 2 remote controls, resettable clutch, mounting hardware and instruction manual.</figcaption>
+            </figure>
+        </div>
         </section>
 
+    </section>
+
+
+    <!-- ===================== USE CASES ===================== -->
+    <section class="use-cases" id="use-cases">
+        <div class="use-cases-inner">
+            <div class="use-cases-head">
+                <span class="model-badge">Applications</span>
+                <h2>Use Cases</h2>
+                <p>The door opener can be used for sliding doors, folding doors and some types of swing doors.</p>
+            </div>
+            <div class="use-cases-grid">
+                <figure class="use-case-card">
+                    <img src="images/gate/usecase/usecase-garage-sectional.jpg" alt="Sliding and sectional garage door with automatic opener" loading="lazy">
+                    <figcaption class="use-case-body">
+                        <h3>Sliding &amp; Sectional Garage Doors</h3>
+                        <p>Straight tracks and standard sectional panels &mdash; the most common residential installation.</p>
+                    </figcaption>
+                </figure>
+                <figure class="use-case-card">
+                    <img src="images/gate/usecase/usecase-garage-tilting.jpg" alt="Tilting and folding garage door with automatic opener" loading="lazy">
+                    <figcaption class="use-case-body">
+                        <h3>Folding &amp; Tilting Garage Doors</h3>
+                        <p>Tilting and folding panel systems driven by the same motor platform.</p>
+                    </figcaption>
+                </figure>
+                <figure class="use-case-card">
+                    <img src="images/gate/usecase/usecase-swing-gate.jpg" alt="Swing gate with outrigger arm opener" loading="lazy">
+                    <figcaption class="use-case-body">
+                        <h3>Swing Doors &amp; Gates</h3>
+                        <p>Some types of swing doors and gates can be driven with an outrigger arm arrangement.</p>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
     </section>
 
 <section class="cta-section">
